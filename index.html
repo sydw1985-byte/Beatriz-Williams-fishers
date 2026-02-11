@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Beatriz Williams — Historical Fiction</title>
+  <meta name="description" content="Beatriz Williams — bestselling author of historical fiction." />
+
+  <!-- Optional: Google Fonts (safe to remove if you prefer system fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* Fishers Island / North Shore palette */
+      --ink:#0f1a22;          /* deep ink navy */
+      --ink2:#162635;         /* secondary navy */
+      --fog:#f6f3ee;          /* warm fog/ivory */
+      --linen:#fbf8f2;        /* paper */
+      --drift:#e7e0d6;        /* driftwood */
+      --salt:#cfd8dc;         /* cool salt gray */
+      --seaglass:#6f8f8b;     /* muted sea-glass */
+      --rule:rgba(15,26,34,.14);
+
+      --max:1120px;
+      --serif:"Cormorant Garamond", ui-serif, "Iowan Old Style", Garamond, Georgia, serif;
+      --sans:"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+
+      --shadow: 0 14px 40px rgba(15,26,34,.10);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      color:var(--ink);
+      font-family:var(--sans);
+      background: radial-gradient(1200px 700px at 20% 0%, rgba(111,143,139,.10), transparent 60%),
+                  radial-gradient(1200px 700px at 80% 0%, rgba(231,224,214,.55), transparent 55%),
+                  linear-gradient(180deg, var(--fog), var(--linen) 42%, var(--fog));
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+
+    .container{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 24px;
+    }
+
+    /* Subtle linen texture */
+    .grain{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:
+        repeating-linear-gradient(0deg, rgba(15,26,34,.02), rgba(15,26,34,.02) 1px, transparent 1px, transparent 3px),
+        repeating-linear-gradient(90deg, rgba(15,26,34,.012), rgba(15,26,34,.012) 1px, transparent 1px, transparent 4px);
+      opacity:.55;
+      mix-blend-mode:multiply;
+    }
+
+    /* Top nav */
+    header{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:saturate(120%) blur(10px);
+      background:rgba(246,243,238,.82);
+      border-bottom:1px solid var(--rule);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:14px 0;
+    }
+    .brand{
+      font-family:var(--serif);
+      font-weight:600;
+      letter-spacing:.02em;
+      font-size:20px;
+    }
+    .navlinks{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+      font-size:14px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:rgba(15,26,34,.80);
+    }
+    .navlinks a{
+      padding:8px 6px;
+      border-radius:10px;
+    }
+    .navlinks a:hover{
+      background:rgba(111,143,139,.10);
+    }
+
+    /* Hero */
+    .hero{
+      padding:78px 0 34px 0;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:42px;
+      align-items:center;
+    }
+    .kicker{
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(15,26,34,.68);
+      margin:0 0 14px 0;
+    }
+    h1{
+      font-family:var(--serif);
+      font-weight:600;
+      margin:0 0 14px 0;
+      font-size:clamp(44px, 6vw, 74px);
+      line-height:1.02;
+      letter-spacing:-0.02em;
+    }
+    .dek{
+      font-size:18px;
+      line-height:1.75;
+      color:rgba(15,26,34,.82);
+      margin:0 0 22px 0;
+      max-width:60ch;
+    }
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top:8px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      height:44px;
+      padding:0 16px;
+      border-radius:999px;
+      border:1px solid var(--rule);
+      font-size:13px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      transition:transform .12s ease, background .12s ease, border-color .12s ease;
+      background:transparent;
+    }
+    .btn:hover{ transform:translateY(-1px); }
+    .btn.primary{
+      background:linear-gradient(180deg, rgba(15,26,34,.94), rgba(15,26,34,.88));
+      color:var(--fog);
+      border-color:rgba(15,26,34,.35);
+      box-shadow: 0 10px 26px rgba(15,26,34,.16);
+    }
+    .btn.primary:hover{
+      background:linear-gradient(180deg, rgba(15,26,34,.98), rgba(15,26,34,.90));
+    }
+    .btn.ghost:hover{
+      background:rgba(111,143,139,.10);
+      border-color:rgba(111,143,139,.28);
+    }
+
+    /* Right hero “island card” */
+    .island-card{
+      border:1px solid var(--rule);
+      background:rgba(251,248,242,.78);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .island-photo{
+      aspect-ratio: 4 / 3;
+      background:
+        linear-gradient(180deg, rgba(15,26,34,.08), rgba(15,26,34,.06)),
+        url("https://via.placeholder.com/1400x1050.png?text=Coastal+Estate+%2F+Shoreline") center/cover no-repeat;
+      border-bottom:1px solid var(--rule);
+    }
+    .island-body{
+      padding:18px 18px 16px 18px;
+    }
+    .island-title{
+      font-family:var(--serif);
+      font-weight:600;
+      margin:0 0 6px 0;
+      font-size:22px;
+      letter-spacing:-0.01em;
+    }
+    .island-meta{
+      margin:0;
+      font-size:14px;
+      line-height:1.6;
+      color:rgba(15,26,34,.72);
+    }
+
+    .rule{
+      border:0;
+      height:1px;
+      background:var(--rule);
+      margin:26px 0;
+    }
+
+    section{
+      padding:54px 0;
+    }
+
+    h2{
+      font-family:var(--serif);
+      font-weight:600;
+      font-size:clamp(28px, 3.5vw, 40px);
+      line-height:1.08;
+      margin:0 0 12px 0;
+      letter-spacing:-0.01em;
+    }
+    .lead{
+      margin:0 0 18px 0;
+      font-size:18px;
+      line-height:1.75;
+      color:rgba(15,26,34,.80);
+      max-width:68ch;
+    }
+
+    /* Featured book */
+    .feature{
+      display:grid;
+      grid-template-columns: .95fr 1.35fr;
+      gap:46px;
+      align-items:start;
+    }
+    .cover{
+      width:100%;
+      max-width:420px;
+      aspect-ratio: 2 / 3;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--rule);
+      background:linear-gradient(180deg, rgba(231,224,214,.55), rgba(207,216,220,.30));
+      box-shadow: 0 18px 44px rgba(15,26,34,.12);
+    }
+    .cover img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .smallcaps{
+      font-size:12px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:rgba(15,26,34,.62);
+      margin:0 0 10px 0;
+    }
+    .book-title{
+      font-family:var(--serif);
+      font-weight:600;
+      font-size:34px;
+      margin:0 0 10px 0;
+      letter-spacing:-0.01em;
+      line-height:1.08;
+    }
+    .book-blurb{
+      font-size:18px;
+      line-height:1.75;
+      margin:0;
+      color:rgba(15,26,34,.82);
+    }
+    blockquote{
+      margin:18px 0 0 0;
+      padding:14px 16px;
+      border-left:2px solid rgba(111,143,139,.40);
+      background:rgba(111,143,139,.08);
+      border-radius:14px;
+      font-family:var(--serif);
+      font-style:italic;
+      font-size:20px;
+      line-height:1.65;
+    }
+    blockquote footer{
+      margin-top:10px;
+      font-family:var(--sans);
+      font-style:normal;
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(15,26,34,.64);
+    }
+    .retail{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 12px;
+      margin-top:14px;
+      font-size:12px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:rgba(15,26,34,.62);
+    }
+    .retail a{
+      border-bottom:1px solid rgba(15,26,34,.22);
+      padding-bottom:2px;
+    }
+    .retail a:hover{
+      border-bottom-color: rgba(111,143,139,.70);
+    }
+
+    /* Praise (editorial) */
+    .praise{
+      display:grid;
+      gap:18px;
+      max-width:860px;
+      margin:0 auto;
+      text-align:center;
+    }
+    .praise p{
+      margin:0;
+      font-family:var(--serif);
+      font-style:italic;
+      font-size:22px;
+      line-height:1.65;
+      color:rgba(15,26,34,.90);
+    }
+    .praise span{
+      display:block;
+      margin-top:10px;
+      font-family:var(--sans);
+      font-style:normal;
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(15,26,34,.62);
+    }
+
+    /* About */
+    .about{
+      display:grid;
+      grid-template-columns: .9fr 1.4fr;
+      gap:46px;
+      align-items:start;
+    }
+    .portrait{
+      width:100%;
+      max-width:380px;
+      aspect-ratio: 1 / 1;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--rule);
+      background:
+        linear-gradient(180deg, rgba(15,26,34,.10), rgba(15,26,34,.08)),
+        url("https://via.placeholder.com/1000x1000.png?text=Portrait") center/cover no-repeat;
+      box-shadow: 0 18px 44px rgba(15,26,34,.10);
+    }
+    .about p{
+      margin:0 0 14px 0;
+      font-size:18px;
+      line-height:1.75;
+      color:rgba(15,26,34,.82);
+    }
+    .textlink{
+      display:inline-block;
+      margin-top:10px;
+      font-size:13px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      color:rgba(15,26,34,.86);
+      border-bottom:1px solid rgba(15,26,34,.22);
+      padding-bottom:2px;
+    }
+    .textlink:hover{
+      border-bottom-color: rgba(111,143,139,.70);
+    }
+
+    /* Books grid (estate-gallery feel) */
+    .books-head{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      align-items:flex-end;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+    .books-grid{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:18px;
+    }
+    .card{
+      border:1px solid var(--rule);
+      border-radius:16px;
+      background:rgba(251,248,242,.70);
+      overflow:hidden;
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .card:hover{
+      transform:translateY(-2px);
+      box-shadow: 0 18px 44px rgba(15,26,34,.12);
+      border-color: rgba(111,143,139,.32);
+    }
+    .thumb{
+      aspect-ratio: 2 / 3;
+      background:linear-gradient(180deg, rgba(231,224,214,.60), rgba(207,216,220,.34));
+      border-bottom:1px solid var(--rule);
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .cardbody{
+      padding:12px 12px 14px 12px;
+    }
+    .ctitle{
+      margin:0 0 4px 0;
+      font-family:var(--serif);
+      font-weight:600;
+      font-size:16px;
+      letter-spacing:-0.01em;
+    }
+    .cyear{
+      margin:0;
+      font-size:11px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:rgba(15,26,34,.62);
+    }
+
+    /* Newsletter */
+    .newsletter{
+      border:1px solid var(--rule);
+      background:rgba(251,248,242,.78);
+      border-radius:var(--radius);
+      padding:26px;
+      box-shadow:var(--shadow);
+    }
+    .form{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    input[type="email"]{
+      flex:1;
+      min-width:220px;
+      height:44px;
+      border-radius:999px;
+      border:1px solid var(--rule);
+      padding:0 14px;
+      font-size:16px;
+      background:rgba(255,255,255,.75);
+      outline:none;
+    }
+    input[type="email"]:focus{
+      border-color: rgba(111,143,139,.55);
+      box-shadow: 0 0 0 4px rgba(111,143,139,.14);
+    }
+    .note{
+      margin:10px 0 0 0;
+      font-size:13px;
+      line-height:1.6;
+      color:rgba(15,26,34,.62);
+    }
+
+    /* Events */
+    .events{
+      border:1px solid var(--rule);
+      border-radius:var(--radius);
+      background:rgba(251,248,242,.70);
+      overflow:hidden;
+    }
+    .event{
+      display:grid;
+      grid-template-columns: 160px 1fr auto;
+      gap:16px;
+      align-items:center;
+      padding:16px 18px;
+      border-bottom:1px solid var(--rule);
+    }
+    .event:last-child{ border-bottom:0; }
+    .edate{
+      font-size:11px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:rgba(15,26,34,.62);
+    }
+    .emain{
+      font-size:16px;
+      line-height:1.55;
+      color:rgba(15,26,34,.82);
+    }
+
+    /* Footer */
+    footer{
+      padding:42px 0 60px 0;
+      border-top:1px solid var(--rule);
+      margin-top:24px;
+      background:rgba(246,243,238,.55);
+    }
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+    .footname{
+      font-family:var(--serif);
+      font-weight:600;
+      font-size:18px;
+      letter-spacing:.02em;
+      margin:0;
+    }
+    .footnav{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      font-size:13px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      color:rgba(15,26,34,.72);
+    }
+    .footnav a{ border-bottom:1px solid transparent; padding-bottom:2px; }
+    .footnav a:hover{ border-bottom-color: rgba(111,143,139,.70); }
+    .fineprint{
+      margin-top:14px;
+      font-size:12px;
+      color:rgba(15,26,34,.58);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .feature{ grid-template-columns: 1fr; }
+      .about{ grid-template-columns: 1fr; }
+      .books-grid{ grid-template-columns: repeat(2, 1fr); }
+      .event{ grid-template-columns: 1fr; align-items:start; }
+    }
+    @media (max-width: 520px){
+      section{ padding:42px 0; }
+      .hero{ padding:54px 0 20px 0; }
+      .books-grid{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="brand">Beatriz Williams</div>
+        <nav class="navlinks" aria-label="Primary">
+          <a href="#books">Books</a>
+          <a href="#about">About</a>
+          <a href="#events">Events</a>
+          <a href="#newsletter">Newsletter</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="container">
+    <div class="hero">
+      <div class="hero-grid">
+        <div>
+          <p class="kicker">Historical Fiction • Coastal New York • Twentieth Century</p>
+          <h1>Stories set where memory lingers.</h1>
+          <p class="dek">
+            Novels of love, loyalty, and reinvention—told against the private architecture of power,
+            inheritance, and the secrets we keep to survive.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#featured">Explore the latest</a>
+            <a class="btn ghost" href="#books">Browse the novels</a>
+          </div>
+        </div>
+
+        <aside class="island-card" aria-label="Fishers Island aesthetic card">
+          <div class="island-photo" role="img" aria-label="Coastal estate / shoreline"></div>
+          <div class="island-body">
+            <p class="island-title"><em>The [Latest Book Title]</em></p>
+            <p class="island-meta">
+              A glittering season, a guarded past, and a choice that will remake everything.
+            </p>
+          </div>
+        </aside>
+      </div>
+
+      <hr class="rule" />
+    </div>
+  </div>
+
+  <!-- FEATURED BOOK -->
+  <section id="featured">
+    <div class="container">
+      <div class="feature">
+        <div>
+          <div class="cover">
+            <img src="https://via.placeholder.com/900x1350.png?text=Latest+Book+Cover" alt="Latest book cover">
+          </div>
+        </div>
+        <div>
+          <p class="smallcaps">Featured Novel</p>
+          <div class="book-title"><em>The [Latest Book Title]</em></div>
+          <p class="book-blurb">
+            In the waning days of a coastal season, a woman with everything to lose must decide
+            whether the life she has built is worth the secrets it demands. As old loyalties fracture
+            and new alliances emerge, the past refuses to remain buried.
+          </p>
+          <blockquote>
+            “Williams writes with precision and emotional intelligence.”
+            <footer>— The New York Times Book Review</footer>
+          </blockquote>
+
+          <div class="retail" aria-label="Retail links">
+            <a href="#" target="_blank" rel="noopener">Amazon</a>
+            <a href="#" target="_blank" rel="noopener">Barnes &amp; Noble</a>
+            <a href="#" target="_blank" rel="noopener">IndieBound</a>
+            <a href="#" target="_blank" rel="noopener">Bookshop</a>
+          </div>
+
+          <div style="margin-top:18px;">
+            <a class="textlink" href="#books">See all novels →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRAISE -->
+  <section>
+    <div class="container">
+      <div class="praise">
+        <p>“Utterly transporting.” <span>— Publishers Weekly</span></p>
+        <p>“A master of time, place, and moral complexity.” <span>— Kirkus Reviews</span></p>
+        <p>“Few authors render the emotional architecture of women’s lives with such nuance.” <span>— Booklist</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about">
+        <div class="portrait" aria-label="Author portrait"></div>
+        <div>
+          <p class="smallcaps">About</p>
+          <h2>Beatriz Williams</h2>
+          <p>
+            Beatriz Williams is the New York Times, USA Today, and internationally bestselling author of historical novels set
+            among the social and political fault lines of the twentieth century. Her fiction moves between eras and perspectives,
+            examining the ways ambition, love, and memory shape the lives of women across generations.
+          </p>
+          <p>
+            A graduate of Stanford University and Columbia Business School, she began her career in finance before turning to fiction.
+            Her novels have been translated into more than a dozen languages.
+          </p>
+          <a class="textlink" href="#contact">Read the full biography →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKS -->
+  <section id="books">
+    <div class="container">
+      <div class="books-head">
+        <div>
+          <p class="smallcaps">Books</p>
+          <h2>The Novels</h2>
+          <p class="lead">A backlist built on atmosphere, moral stakes, and the long shadow of what came before.</p>
+        </div>
+        <div>
+          <a class="textlink" href="#">View all books →</a>
+        </div>
+      </div>
+
+      <div class="books-grid">
+        <!-- Replace each placeholder with real covers + links -->
+        <a class="card" href="#">
+          <div class="thumb"><img src="https://via.placeholder.com/900x1350.png?text=Cover" alt="Book cover"></div>
+          <div class="cardbody">
+            <p class="ctitle">[Book Title]</p>
+            <p class="cyear">2025</p>
+          </div>
+        </a>
+
+        <a class="card" href="#">
+          <div class="thumb"><img src="https://via.placeholder.com/900x1350.png?text=Cover" alt="Book cover"></div>
+          <div class="cardbody">
+            <p class="ctitle">[Book Title]</p>
+            <p class="cyear">2023</p>
+          </div>
+        </a>
+
+        <a class="card" href="#">
+          <div class="thumb"><img src="https://via.placeholder.com/900x1350.png?text=Cover" alt="Book cover"></div>
+          <div class="cardbody">
+            <p class="ctitle">[Book Title]</p>
+            <p class="cyear">2021</p>
+          </div>
+        </a>
+
+        <a class="card" href="#">
+          <div class="thumb"><img src="https://via.placeholder.com/900x1350.png?text=Cover" alt="Book cover"></div>
+          <div class="cardbody">
+            <p class="ctitle">[Book Title]</p>
+            <p class="cyear">2019</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section id="newsletter">
+    <div class="container">
+      <div class="newsletter">
+        <p class="smallcaps">Newsletter</p>
+        <h2>Letters from Beatriz</h2>
+        <p class="lead" style="margin-bottom:0;">
+          Occasional notes on writing, research, and forthcoming novels—sent quietly, and only when there’s something worth sharing.
+        </p>
+
+        <!-- Mock form: replace action with your provider (ConvertKit/Mailchimp/etc.) -->
+        <form class="form" action="#" method="post">
+          <input type="email" name="email" placeholder="Email address" required>
+          <button class="btn primary" type="submit">Subscribe</button>
+        </form>
+
+        <p class="note">No spam. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section id="events">
+    <div class="container">
+      <p class="smallcaps">Appearances</p>
+      <h2>Events</h2>
+
+      <div class="events" role="list">
+        <div class="event" role="listitem">
+          <div class="edate">April 12, 2026</div>
+          <div class="emain">Palm Beach, Florida — The Society of the Four Arts</div>
+          <div><a class="textlink" href="#">Details →</a></div>
+        </div>
+
+        <div class="event" role="listitem">
+          <div class="edate">May 3, 2026</div>
+          <div class="emain">New York, NY — Conversation &amp; Signing</div>
+          <div><a class="textlink" href="#">Details →</a></div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;">
+        <a class="textlink" href="#">View all events →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT (placeholder) -->
+  <section id="contact">
+    <div class="container">
+      <p class="smallcaps">Contact</p>
+      <h2>Inquiries</h2>
+      <p class="lead">
+        For speaking requests, media inquiries, or rights: <a class="textlink" href="mailto:info@example.com">info@example.com</a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <p class="footname">Beatriz Williams</p>
+        <nav class="footnav" aria-label="Footer">
+          <a href="#books">Books</a>
+          <a href="#about">About</a>
+          <a href="#events">Events</a>
+          <a href="#newsletter">Newsletter</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <div class="fineprint">© <span id="year"></span> Beatriz Williams · All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

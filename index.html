@@ -320,6 +320,40 @@
       .hero{ padding:56px 0 28px 0; }
       .books-grid{ grid-template-columns: 1fr; }
     }
+    /* Centered hero typography */
+.hero-centered {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Larger, lighter tagline */
+.tagline {
+  font-size: 22px;
+  color: rgba(15,26,34,.85);
+  margin-top: 12px;
+  max-width: 620px;
+  font-style: italic;
+}
+
+/* Move buttons slightly down */
+.hero-centered .hero-actions {
+  margin-top: 18px;
+}
+
+/* On narrow screens, stack and center card */
+@media (max-width: 980px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-card {
+    margin-top: 32px;
+    justify-self: center;
+  }
+}
   </style>
 </head>
 
@@ -339,20 +373,22 @@
   </header>
 
   <!-- HERO -->
+<!-- HERO -->
 <section class="hero" aria-label="Hero">
   <div class="container">
     <div class="hero-grid">
-      <!-- Updated hero-copy: name first + simple tagline -->
-      <div class="hero-copy">
-        <p class="kicker">Historical Fiction • Coastal New England</p>
+
+      <!-- Author name + simple tagline -->
+      <div class="hero-copy hero-centered">
         <h1>Beatriz Williams</h1>
-        <p class="dek">Sooner or later, the past will find you.</p>
+        <p class="dek tagline">Sooner or later, the past will find you.</p>
         <div class="hero-actions">
           <a class="btn primary" href="#featured">Explore the latest</a>
           <a class="btn ghost" href="#books">Browse the novels</a>
         </div>
       </div>
 
+      <!-- Featured novel card -->
       <aside class="hero-card">
         <div class="hero-card-top">
           <p class="hero-card-title"><em>When You Loved Me</em></p>
@@ -369,6 +405,7 @@
           </div>
         </div>
       </aside>
+
     </div>
   </div>
 </section>

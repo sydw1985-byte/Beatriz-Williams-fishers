@@ -6,26 +6,31 @@
   <title>Beatriz Williams — Historical Fiction</title>
   <meta name="description" content="Beatriz Williams — bestselling author of historical fiction." />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root{
+      /* Palette: bright foggy shoreline + subtle seaglass */
       --ink:#0f1a22;
       --fog:#f6f3ee;
       --linen:#fbf8f2;
-      --drift:#e7e0d6;
-      --salt:#cfd8dc;
-      --seaglass:#6f8f8b;
+      --paper:rgba(251,248,242,.78);
       --rule:rgba(15,26,34,.14);
 
-      --max:1120px;
-      --serif:"Cormorant Garamond", ui-serif, Garamond, Georgia, serif;
-      --sans:"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+      /* Accent */
+      --sea:#6f8f8b;          /* seaglass */
+      --sea-10:rgba(111,143,139,.12);
+      --sea-18:rgba(111,143,139,.18);
+      --sea-28:rgba(111,143,139,.28);
+
+      --max:1140px;
+      --serif:"Cormorant Garamond", Garamond, Georgia, serif;
+      --sans:"Inter", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
 
       --shadow: 0 14px 40px rgba(15,26,34,.10);
+      --shadow2: 0 18px 54px rgba(15,26,34,.12);
       --radius: 18px;
     }
 
@@ -34,9 +39,10 @@
       margin:0;
       color:var(--ink);
       font-family:var(--sans);
-      background: radial-gradient(1200px 700px at 25% 0%, rgba(111,143,139,.10), transparent 60%),
-                  radial-gradient(1200px 700px at 75% 0%, rgba(231,224,214,.55), transparent 55%),
-                  linear-gradient(180deg, var(--fog), var(--linen) 42%, var(--fog));
+      background:
+        radial-gradient(1200px 700px at 25% 0%, var(--sea-10), transparent 62%),
+        radial-gradient(1200px 700px at 75% 0%, rgba(231,224,214,.55), transparent 60%),
+        linear-gradient(180deg, var(--fog), var(--linen) 42%, var(--fog));
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
     }
@@ -44,34 +50,31 @@
 
     .container{ max-width:var(--max); margin:0 auto; padding:0 24px; }
 
-    /* Linen grain */
-    .grain{
-      position:fixed; inset:0; pointer-events:none;
-      background-image:
-        repeating-linear-gradient(0deg, rgba(15,26,34,.02), rgba(15,26,34,.02) 1px, transparent 1px, transparent 3px),
-        repeating-linear-gradient(90deg, rgba(15,26,34,.012), rgba(15,26,34,.012) 1px, transparent 1px, transparent 4px);
-      opacity:.55; mix-blend-mode:multiply;
-    }
-
     header{
       position:sticky; top:0; z-index:20;
       backdrop-filter:saturate(120%) blur(10px);
-      background:rgba(246,243,238,.82);
+      background:rgba(246,243,238,.86);
       border-bottom:1px solid var(--rule);
     }
     .nav{ display:flex; align-items:center; justify-content:space-between; gap:18px; padding:14px 0; }
     .brand{ font-family:var(--serif); font-weight:600; letter-spacing:.02em; font-size:20px; }
     .navlinks{
       display:flex; gap:18px; flex-wrap:wrap; align-items:center;
-      font-size:14px; letter-spacing:.08em; text-transform:uppercase;
-      color:rgba(15,26,34,.80);
+      font-size:13px; letter-spacing:.10em; text-transform:uppercase;
+      color:rgba(15,26,34,.78);
     }
     .navlinks a{ padding:8px 6px; border-radius:10px; }
-    .navlinks a:hover{ background:rgba(111,143,139,.10); }
+    .navlinks a:hover{ background:var(--sea-10); }
 
-    .hero{ padding:78px 0 34px 0; }
-    .hero-grid{ display:grid; grid-template-columns: 1.2fr .8fr; gap:42px; align-items:center; }
-
+    /* HERO */
+    .hero{
+      padding:78px 0 38px 0;
+      background:
+        linear-gradient(180deg, rgba(246,243,238,.92), rgba(246,243,238,.88)),
+        url("https://beatrizwilliams.com/wp-content/uploads/2017/06/BWIL_BookClubs.jpg") center/cover no-repeat;
+      border-bottom:1px solid var(--rule);
+    }
+    .hero-grid{ display:grid; grid-template-columns: 1.15fr .85fr; gap:42px; align-items:center; }
     .kicker{
       font-size:12px; letter-spacing:.14em; text-transform:uppercase;
       color:rgba(15,26,34,.68); margin:0 0 14px 0;
@@ -79,19 +82,20 @@
     h1{
       font-family:var(--serif); font-weight:600;
       margin:0 0 14px 0;
-      font-size:clamp(44px, 6vw, 74px);
+      font-size:clamp(44px, 6vw, 72px);
       line-height:1.02; letter-spacing:-0.02em;
     }
     .dek{
       font-size:18px; line-height:1.75; color:rgba(15,26,34,.82);
-      margin:0 0 22px 0; max-width:60ch;
+      margin:0 0 22px 0; max-width:62ch;
     }
     .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-top:8px; }
+
     .btn{
       display:inline-flex; align-items:center; gap:10px;
       height:44px; padding:0 16px; border-radius:999px;
       border:1px solid var(--rule);
-      font-size:13px; letter-spacing:.10em; text-transform:uppercase;
+      font-size:12px; letter-spacing:.14em; text-transform:uppercase;
       transition:transform .12s ease, background .12s ease, border-color .12s ease;
       background:transparent;
     }
@@ -103,200 +107,151 @@
       box-shadow: 0 10px 26px rgba(15,26,34,.16);
     }
     .btn.primary:hover{ background:linear-gradient(180deg, rgba(15,26,34,.98), rgba(15,26,34,.90)); }
-    .btn.ghost:hover{ background:rgba(111,143,139,.10); border-color:rgba(111,143,139,.28); }
+    .btn.ghost:hover{ background:var(--sea-10); border-color:var(--sea-28); }
 
-    /* Right hero card */
-    .island-card{
+    .hero-card{
       border:1px solid var(--rule);
-      background:rgba(251,248,242,.78);
+      background:var(--paper);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
       overflow:hidden;
     }
-
-    /* HERO IMAGE: bright foggy shoreline */
-    .island-photo{
-      aspect-ratio: 4 / 3;
-      background:
-        linear-gradient(180deg, rgba(246,243,238,.10), rgba(15,26,34,.10)),
-        url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1600&q=70") center/cover no-repeat;
-      border-bottom:1px solid var(--rule);
+    .hero-card-top{
+      padding:18px 18px 16px 18px;
     }
-
-    .island-body{ padding:18px 18px 16px 18px; }
-    .island-title{ font-family:var(--serif); font-weight:600; margin:0 0 6px 0; font-size:22px; }
-    .island-meta{ margin:0; font-size:14px; line-height:1.6; color:rgba(15,26,34,.72); }
+    .hero-card-title{ font-family:var(--serif); font-weight:600; margin:0 0 6px 0; font-size:22px; }
+    .hero-card-meta{ margin:0; font-size:14px; line-height:1.6; color:rgba(15,26,34,.72); }
+    .hero-card-cover{
+      border-top:1px solid var(--rule);
+      padding:16px 18px 18px 18px;
+      display:grid;
+      grid-template-columns: 88px 1fr;
+      gap:14px;
+      align-items:center;
+    }
+    .mini-cover{
+      width:88px; aspect-ratio: 2 / 3;
+      border-radius:12px; overflow:hidden;
+      border:1px solid var(--rule);
+      box-shadow: 0 12px 28px rgba(15,26,34,.10);
+      background:#fff;
+    }
+    .mini-cover img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .mini-text .mini-k{ margin:0 0 6px 0; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:rgba(15,26,34,.62); }
+    .mini-text .mini-t{ margin:0; font-family:var(--serif); font-weight:600; font-size:18px; line-height:1.15; }
+    .mini-text .mini-sub{ margin:6px 0 0 0; font-size:13px; line-height:1.55; color:rgba(15,26,34,.74); }
 
     .rule{ border:0; height:1px; background:var(--rule); margin:26px 0; }
-    section{ padding:54px 0; }
+    section{ padding:58px 0; }
 
     h2{
       font-family:var(--serif); font-weight:600;
       font-size:clamp(28px, 3.5vw, 40px);
       line-height:1.08; margin:0 0 12px 0;
     }
-    .lead{ margin:0 0 18px 0; font-size:18px; line-height:1.75; color:rgba(15,26,34,.80); max-width:68ch; }
+    .lead{ margin:0 0 18px 0; font-size:18px; line-height:1.75; color:rgba(15,26,34,.80); max-width:70ch; }
+    .smallcaps{ font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:rgba(15,26,34,.62); margin:0 0 10px 0; }
 
-    /* Featured book */
+    /* Featured */
     .feature{ display:grid; grid-template-columns: .95fr 1.35fr; gap:46px; align-items:start; }
     .cover{
       width:100%; max-width:420px; aspect-ratio: 2 / 3;
       border-radius:16px; overflow:hidden;
       border:1px solid var(--rule);
-      background:linear-gradient(180deg, rgba(231,224,214,.55), rgba(207,216,220,.30));
-      box-shadow: 0 18px 44px rgba(15,26,34,.12);
+      background:#fff;
+      box-shadow: var(--shadow2);
     }
     .cover img{ width:100%; height:100%; object-fit:cover; display:block; }
 
-    .smallcaps{ font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:rgba(15,26,34,.62); margin:0 0 10px 0; }
     .book-title{ font-family:var(--serif); font-weight:600; font-size:34px; margin:0 0 10px 0; line-height:1.08; }
     .book-blurb{ font-size:18px; line-height:1.75; margin:0; color:rgba(15,26,34,.82); }
 
-    blockquote{
-      margin:18px 0 0 0; padding:14px 16px;
-      border-left:2px solid rgba(111,143,139,.40);
-      background:rgba(111,143,139,.08);
-      border-radius:14px;
-      font-family:var(--serif); font-style:italic;
-      font-size:20px; line-height:1.65;
+    .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+    .chip{
+      display:inline-flex; align-items:center; height:38px; padding:0 14px;
+      border-radius:999px; border:1px solid var(--rule);
+      background:rgba(255,255,255,.55);
+      font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+      transition:background .12s ease, border-color .12s ease, transform .12s ease;
     }
-    blockquote footer{
-      margin-top:10px; font-family:var(--sans); font-style:normal;
-      font-size:12px; letter-spacing:.14em; text-transform:uppercase;
-      color:rgba(15,26,34,.64);
-    }
-
-    .retail{
-      display:flex; flex-wrap:wrap; gap:10px 12px; margin-top:14px;
-      font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:rgba(15,26,34,.62);
-    }
-    .retail a{ border-bottom:1px solid rgba(15,26,34,.22); padding-bottom:2px; }
-    .retail a:hover{ border-bottom-color: rgba(111,143,139,.70); }
-
-    /* Praise */
-    .praise{ display:grid; gap:18px; max-width:860px; margin:0 auto; text-align:center; }
-    .praise p{ margin:0; font-family:var(--serif); font-style:italic; font-size:22px; line-height:1.65; }
-    .praise span{
-      display:block; margin-top:10px;
-      font-family:var(--sans); font-style:normal;
-      font-size:12px; letter-spacing:.14em; text-transform:uppercase;
-      color:rgba(15,26,34,.62);
-    }
+    .chip:hover{ background:var(--sea-10); border-color:var(--sea-28); transform:translateY(-1px); }
+    .chip.primary{ background:var(--sea-10); border-color:var(--sea-28); }
 
     /* About */
     .about{ display:grid; grid-template-columns: .9fr 1.4fr; gap:46px; align-items:start; }
     .portrait{
       width:100%; max-width:380px; aspect-ratio: 1 / 1;
       border-radius:16px; overflow:hidden; border:1px solid var(--rule);
-      background: linear-gradient(180deg, rgba(15,26,34,.10), rgba(15,26,34,.08));
-      box-shadow: 0 18px 44px rgba(15,26,34,.10);
+      background:#fff; box-shadow: var(--shadow);
     }
     .portrait img{
       width:100%; height:100%; object-fit:cover; display:block;
-      filter: grayscale(100%) contrast(1.05) brightness(1.02);
+      filter: grayscale(100%) contrast(1.06) brightness(1.02);
     }
     .about p{ margin:0 0 14px 0; font-size:18px; line-height:1.75; color:rgba(15,26,34,.82); }
-
-    .textlink{
-      display:inline-block; margin-top:10px;
-      font-size:13px; letter-spacing:.10em; text-transform:uppercase;
-      border-bottom:1px solid rgba(15,26,34,.22); padding-bottom:2px;
-    }
-    .textlink:hover{ border-bottom-color: rgba(111,143,139,.70); }
 
     /* Books grid */
     .books-head{
       display:flex; justify-content:space-between; gap:18px;
       align-items:flex-end; flex-wrap:wrap; margin-bottom:18px;
     }
-    .books-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap:18px; }
+    .books-grid{ display:grid; grid-template-columns: repeat(5, 1fr); gap:18px; }
     .card{
       border:1px solid var(--rule);
       border-radius:16px;
-      background:rgba(251,248,242,.70);
+      background:var(--paper);
       overflow:hidden;
       transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
     }
     .card:hover{
       transform:translateY(-2px);
-      box-shadow: 0 18px 44px rgba(15,26,34,.12);
-      border-color: rgba(111,143,139,.32);
+      box-shadow: var(--shadow2);
+      border-color: var(--sea-28);
     }
-    .thumb{ aspect-ratio: 2 / 3; background:linear-gradient(180deg, rgba(231,224,214,.60), rgba(207,216,220,.34)); border-bottom:1px solid var(--rule); }
+    .thumb{ aspect-ratio: 2 / 3; background:#fff; border-bottom:1px solid var(--rule); }
     .thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
     .cardbody{ padding:12px 12px 14px 12px; }
     .ctitle{ margin:0 0 4px 0; font-family:var(--serif); font-weight:600; font-size:16px; }
     .cyear{ margin:0; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(15,26,34,.62); }
 
-    /* Newsletter */
-    .newsletter{
-      border:1px solid var(--rule);
-      background:rgba(251,248,242,.78);
-      border-radius:var(--radius);
-      padding:26px;
-      box-shadow:var(--shadow);
-    }
-    .form{ margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
-    input[type="email"]{
-      flex:1; min-width:220px; height:44px;
-      border-radius:999px; border:1px solid var(--rule);
-      padding:0 14px; font-size:16px; background:rgba(255,255,255,.75); outline:none;
-    }
-    input[type="email"]:focus{
-      border-color: rgba(111,143,139,.55);
-      box-shadow: 0 0 0 4px rgba(111,143,139,.14);
-    }
-    .note{ margin:10px 0 0 0; font-size:13px; line-height:1.6; color:rgba(15,26,34,.62); }
-
-    /* Events */
-    .events{ border:1px solid var(--rule); border-radius:var(--radius); background:rgba(251,248,242,.70); overflow:hidden; }
-    .event{
-      display:grid; grid-template-columns: 160px 1fr auto;
-      gap:16px; align-items:center; padding:16px 18px;
-      border-bottom:1px solid var(--rule);
-    }
-    .event:last-child{ border-bottom:0; }
-    .edate{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(15,26,34,.62); }
-    .emain{ font-size:16px; line-height:1.55; color:rgba(15,26,34,.82); }
-
+    /* Footer */
     footer{
       padding:42px 0 60px 0; border-top:1px solid var(--rule);
-      margin-top:24px; background:rgba(246,243,238,.55);
+      background:rgba(246,243,238,.55);
     }
     .foot{ display:flex; justify-content:space-between; align-items:center; gap:18px; flex-wrap:wrap; }
     .footname{ font-family:var(--serif); font-weight:600; font-size:18px; margin:0; }
-    .footnav{ display:flex; gap:14px; flex-wrap:wrap; font-size:13px; letter-spacing:.10em; text-transform:uppercase; color:rgba(15,26,34,.72); }
+    .footnav{ display:flex; gap:14px; flex-wrap:wrap; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:rgba(15,26,34,.72); }
     .footnav a{ border-bottom:1px solid transparent; padding-bottom:2px; }
-    .footnav a:hover{ border-bottom-color: rgba(111,143,139,.70); }
+    .footnav a:hover{ border-bottom-color: var(--sea); }
     .fineprint{ margin-top:14px; font-size:12px; color:rgba(15,26,34,.58); }
 
+    @media (max-width: 1100px){
+      .books-grid{ grid-template-columns: repeat(3, 1fr); }
+    }
     @media (max-width: 980px){
       .hero-grid{ grid-template-columns: 1fr; }
       .feature{ grid-template-columns: 1fr; }
       .about{ grid-template-columns: 1fr; }
       .books-grid{ grid-template-columns: repeat(2, 1fr); }
-      .event{ grid-template-columns: 1fr; align-items:start; }
     }
     @media (max-width: 520px){
-      section{ padding:42px 0; }
-      .hero{ padding:54px 0 20px 0; }
+      section{ padding:44px 0; }
+      .hero{ padding:56px 0 28px 0; }
       .books-grid{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
-  <div class="grain" aria-hidden="true"></div>
-
   <header>
     <div class="container">
       <div class="nav">
         <div class="brand">Beatriz Williams</div>
         <nav class="navlinks" aria-label="Primary">
+          <a href="#featured">Latest</a>
           <a href="#books">Books</a>
           <a href="#about">About</a>
-          <a href="#events">Events</a>
-          <a href="#newsletter">Newsletter</a>
           <a href="#contact">Contact</a>
         </nav>
       </div>
@@ -304,14 +259,14 @@
   </header>
 
   <!-- HERO -->
-  <div class="container">
-    <div class="hero">
+  <section class="hero" aria-label="Hero">
+    <div class="container">
       <div class="hero-grid">
         <div>
           <p class="kicker">Historical Fiction • Coastal New York • Twentieth Century</p>
-          <h1>Bright shorelines. Old loyalties.</h1>
+          <h1>Bright shorelines.<br/>Enduring secrets.</h1>
           <p class="dek">
-            Novels of love, inheritance, and reinvention—set where the past persists just beneath the surface.
+            Novels of love, inheritance, and reinvention—set where memory lingers just beneath the surface.
           </p>
           <div class="hero-actions">
             <a class="btn primary" href="#featured">Explore the latest</a>
@@ -319,65 +274,52 @@
           </div>
         </div>
 
-        <aside class="island-card" aria-label="Coastal card">
-          <div class="island-photo" role="img" aria-label="Foggy shoreline"></div>
-          <div class="island-body">
-            <p class="island-title"><em>The Current Novel</em></p>
-            <p class="island-meta">
-              A guarded past, a glittering season, and a choice that changes everything.
-            </p>
+        <aside class="hero-card">
+          <div class="hero-card-top">
+            <p class="hero-card-title"><em>When You Loved Me</em></p>
+            <p class="hero-card-meta">Publishing June 23, 2026.</p>
+          </div>
+          <div class="hero-card-cover">
+            <a class="mini-cover" href="https://www.penguinrandomhouse.com/books/804608/when-you-loved-me-by-beatriz-williams/" target="_blank" rel="noopener" aria-label="When You Loved Me publisher page">
+              <img src="https://images.penguinrandomhouse.com/cover/9798217094820" alt="When You Loved Me cover">
+            </a>
+            <div class="mini-text">
+              <p class="mini-k">New release</p>
+              <p class="mini-t">When You Loved Me</p>
+              <p class="mini-sub">A coastal season, a guarded past, and the price of belonging.</p>
+            </div>
           </div>
         </aside>
-      </div>
-
-      <hr class="rule" />
-    </div>
-  </div>
-
-  <!-- FEATURED BOOK -->
-  <section id="featured">
-    <div class="container">
-      <div class="feature">
-        <div>
-          <div class="cover">
-            <img src="https://images.penguinrandomhouse.com/cover/9798217094820" alt="Current book cover">
-          </div>
-        </div>
-        <div>
-          <p class="smallcaps">Featured Novel</p>
-          <div class="book-title"><em>The Current Novel</em></div>
-          <p class="book-blurb">
-            In the waning days of a coastal season, a woman with everything to lose must decide
-            whether the life she has built is worth the secrets it demands.
-          </p>
-          <blockquote>
-            “Williams writes with precision and emotional intelligence.”
-            <footer>— The New York Times Book Review</footer>
-          </blockquote>
-
-          <div class="retail" aria-label="Retail links">
-            <a href="#" target="_blank" rel="noopener">Amazon</a>
-            <a href="#" target="_blank" rel="noopener">Barnes &amp; Noble</a>
-            <a href="#" target="_blank" rel="noopener">IndieBound</a>
-            <a href="#" target="_blank" rel="noopener">Bookshop</a>
-          </div>
-
-          <div style="margin-top:18px;">
-            <a class="textlink" href="#books">See all novels →</a>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- PRAISE -->
-  <section>
+  <!-- FEATURED -->
+  <section id="featured">
     <div class="container">
-      <div class="praise">
-        <p>“Utterly transporting.” <span>— Publishers Weekly</span></p>
-        <p>“A master of time, place, and moral complexity.” <span>— Kirkus Reviews</span></p>
-        <p>“Few authors render the emotional architecture of women’s lives with such nuance.” <span>— Booklist</span></p>
+      <div class="feature">
+        <div>
+          <a class="cover" href="https://www.penguinrandomhouse.com/books/804608/when-you-loved-me-by-beatriz-williams/" target="_blank" rel="noopener" aria-label="When You Loved Me publisher page">
+            <img src="https://images.penguinrandomhouse.com/cover/9798217094820" alt="When You Loved Me cover">
+          </a>
+        </div>
+
+        <div>
+          <p class="smallcaps">Featured Novel</p>
+          <div class="book-title"><em>When You Loved Me</em></div>
+          <p class="book-blurb">
+            Publishing June 23, 2026. A young widow returns to her late father’s New England estate—and is drawn into a decades-old obsession that threatens to rewrite the story of her family.
+          </p>
+
+          <div class="chips" aria-label="Buy links for When You Loved Me">
+            <a class="chip primary" href="https://www.penguinrandomhouse.com/books/804608/when-you-loved-me-by-beatriz-williams/" target="_blank" rel="noopener">Publisher</a>
+            <a class="chip" href="https://www.amazon.com/When-You-Loved-Me-Novel/dp/B0FVDJNDHV" target="_blank" rel="noopener">Amazon</a>
+            <a class="chip" href="https://www.barnesandnoble.com/w/when-you-loved-me-beatriz-williams/1148422102?ean=9798217094837" target="_blank" rel="noopener">Barnes &amp; Noble</a>
+          </div>
+        </div>
       </div>
+
+      <hr class="rule" />
     </div>
   </section>
 
@@ -385,21 +327,19 @@
   <section id="about">
     <div class="container">
       <div class="about">
-        <div class="portrait" aria-label="Author portrait">
-          <!-- Replace the src with your real portrait file when you have it -->
-          <img src="https://via.placeholder.com/1200x1200.png?text=Portrait+(Replace+Me)" alt="Beatriz Williams portrait">
+        <div class="portrait">
+          <img src="https://beatrizwilliams.com/wp-content/uploads/2021/06/IMG_0391-2.jpeg" alt="Beatriz Williams portrait">
         </div>
+
         <div>
           <p class="smallcaps">About</p>
           <h2>Beatriz Williams</h2>
           <p>
-            Beatriz Williams is the New York Times, USA Today, and internationally bestselling author of historical novels set
-            among the social and political fault lines of the twentieth century.
+            Beatriz Williams is the New York Times, USA Today, and internationally bestselling author of historical novels set among the social and political fault lines of the twentieth century.
           </p>
           <p>
-            Her fiction moves between eras and perspectives, examining the ways ambition, love, and memory shape the lives of women across generations.
+            Her fiction explores ambition, loyalty, inheritance, and the private negotiations of power across generations—often against the luminous backdrop of coastal New England.
           </p>
-          <a class="textlink" href="#contact">Read the full biography →</a>
         </div>
       </div>
     </div>
@@ -417,86 +357,90 @@
       </div>
 
       <div class="books-grid">
-        <a class="card" href="#" aria-label="Current book">
-          <div class="thumb"><img src="https://images.penguinrandomhouse.com/cover/9798217094820" alt="Current book cover"></div>
+        <!-- 2026 -->
+        <a class="card" href="https://www.penguinrandomhouse.com/books/804608/when-you-loved-me-by-beatriz-williams/" target="_blank" rel="noopener" aria-label="When You Loved Me">
+          <div class="thumb"><img src="https://images.penguinrandomhouse.com/cover/9798217094820" alt="When You Loved Me cover"></div>
           <div class="cardbody">
-            <p class="ctitle">Current Book</p>
-            <p class="cyear">Current</p>
+            <p class="ctitle">When You Loved Me</p>
+            <p class="cyear">June 23, 2026</p>
           </div>
         </a>
 
-        <a class="card" href="#" aria-label="2025 book">
-          <div class="thumb"><img src="https://images.penguinrandomhouse.com/cover/9780593724279" alt="2025 book cover"></div>
+        <!-- 2025 -->
+        <a class="card" href="https://beatrizwilliams.com/books/under-the-stars/" target="_blank" rel="noopener" aria-label="Under the Stars">
+          <div class="thumb"><img src="https://images.penguinrandomhouse.com/cover/9780593724279" alt="Under the Stars cover"></div>
           <div class="cardbody">
-            <p class="ctitle">2025 Novel</p>
+            <p class="ctitle">Under the Stars</p>
             <p class="cyear">2025</p>
           </div>
         </a>
 
-        <a class="card" href="#" aria-label="2024 book">
-          <div class="thumb"><img src="https://images.penguinrandomhouse.com/cover/9780593724248" alt="2024 book cover"></div>
+        <!-- 2024 -->
+        <a class="card" href="https://beatrizwilliams.com/books/husbands-and-lovers/" target="_blank" rel="noopener" aria-label="Husbands &amp; Lovers">
+          <div class="thumb"><img src="https://images.penguinrandomhouse.com/cover/9780593724248" alt="Husbands &amp; Lovers cover"></div>
           <div class="cardbody">
-            <p class="ctitle">2024 Novel</p>
+            <p class="ctitle">Husbands &amp; Lovers</p>
             <p class="cyear">2024</p>
           </div>
         </a>
 
-        <a class="card" href="#" aria-label="2023 book">
-          <div class="thumb"><img src="https://www.harpercollins.com/cdn/shop/files/9780063322912.jpg" alt="2023 book cover"></div>
+        <!-- 2023 -->
+        <a class="card" href="https://beatrizwilliams.com/books/the-beach-at-summerly/" target="_blank" rel="noopener" aria-label="The Beach at Summerly">
+          <div class="thumb"><img src="https://www.harpercollins.com/cdn/shop/files/9780063322912.jpg" alt="The Beach at Summerly cover"></div>
           <div class="cardbody">
-            <p class="ctitle">2023 Novel</p>
+            <p class="ctitle">The Beach at Summerly</p>
             <p class="cyear">2023</p>
           </div>
         </a>
 
-        <a class="card" href="#" aria-label="2021 book">
-          <div class="thumb"><img src="https://www.harpercollins.com/cdn/shop/files/9780063020795.jpg" alt="2021 book cover"></div>
+        <!-- 2021 -->
+        <a class="card" href="https://beatrizwilliams.com/books/our-woman-in-moscow/" target="_blank" rel="noopener" aria-label="Our Woman in Moscow">
+          <div class="thumb"><img src="https://www.harpercollins.com/cdn/shop/files/9780063020795.jpg" alt="Our Woman in Moscow cover"></div>
           <div class="cardbody">
-            <p class="ctitle">2021 Novel</p>
+            <p class="ctitle">Our Woman in Moscow</p>
             <p class="cyear">2021</p>
           </div>
         </a>
       </div>
-    </div>
-  </section>
 
-  <!-- NEWSLETTER -->
-  <section id="newsletter">
-    <div class="container">
-      <div class="newsletter">
-        <p class="smallcaps">Newsletter</p>
-        <h2>Letters from Beatriz</h2>
-        <p class="lead" style="margin-bottom:0;">
-          Occasional notes on writing, research, and forthcoming novels—sent quietly, and only when there’s something worth sharing.
-        </p>
+      <hr class="rule" />
 
-        <form class="form" action="#" method="post">
-          <input type="email" name="email" placeholder="Email address" required>
-          <button class="btn primary" type="submit">Subscribe</button>
-        </form>
+      <!-- Quick Buy Rows (optional but nice) -->
+      <div style="display:grid; gap:14px; max-width:980px;">
+        <div>
+          <p class="smallcaps" style="margin-bottom:8px;">Buy links</p>
 
-        <p class="note">No spam. Unsubscribe anytime.</p>
-      </div>
-    </div>
-  </section>
+          <div class="chips">
+            <span class="chip primary" style="pointer-events:none;">Under the Stars</span>
+            <a class="chip" href="https://www.amazon.com/Under-Stars-Novel-Beatriz-Williams/dp/0593724259" target="_blank" rel="noopener">Amazon</a>
+            <a class="chip" href="https://www.barnesandnoble.com/w/under-the-stars-beatriz-williams/1147022890" target="_blank" rel="noopener">B&amp;N</a>
+            <a class="chip" href="https://bookshop.org/p/books/under-the-stars-a-novel-beatriz-williams/85cb2e7794a05635" target="_blank" rel="noopener">Bookshop</a>
+          </div>
 
-  <!-- EVENTS -->
-  <section id="events">
-    <div class="container">
-      <p class="smallcaps">Appearances</p>
-      <h2>Events</h2>
+          <div class="chips" style="margin-top:10px;">
+            <span class="chip primary" style="pointer-events:none;">Husbands &amp; Lovers</span>
+            <a class="chip" href="https://www.amazon.com/Husbands-Lovers-Novel-Beatriz-Williams/dp/0593724224" target="_blank" rel="noopener">Amazon</a>
+            <a class="chip" href="https://www.barnesandnoble.com/w/husbands-lovers-beatriz-williams/1144121888" target="_blank" rel="noopener">B&amp;N</a>
+            <a class="chip" href="https://bookshop.org/p/books/husbands-lovers-a-novel-beatriz-williams/b795f58ef4b80ad1" target="_blank" rel="noopener">Bookshop</a>
+            <a class="chip" href="https://www.penguinrandomhouse.com/books/736310/husbands-and-lovers-by-beatriz-williams/" target="_blank" rel="noopener">Publisher</a>
+          </div>
 
-      <div class="events" role="list">
-        <div class="event" role="listitem">
-          <div class="edate">April 12, 2026</div>
-          <div class="emain">Palm Beach, Florida — The Society of the Four Arts</div>
-          <div><a class="textlink" href="#">Details →</a></div>
+          <div class="chips" style="margin-top:10px;">
+            <span class="chip primary" style="pointer-events:none;">The Beach at Summerly</span>
+            <a class="chip" href="https://www.amazon.com/Beach-at-Summerly-Novel/dp/006302084X" target="_blank" rel="noopener">Amazon</a>
+            <a class="chip" href="https://www.barnesandnoble.com/w/the-beach-at-summerly-beatriz-williams/1142229176" target="_blank" rel="noopener">B&amp;N</a>
+            <a class="chip" href="https://bookshop.org/p/books/the-beach-at-summerly-a-novel-beatriz-williams/2313d58927c53d09" target="_blank" rel="noopener">Bookshop</a>
+            <a class="chip" href="https://www.harpercollins.com/products/the-beach-at-summerly-beatriz-williams" target="_blank" rel="noopener">Publisher</a>
+          </div>
+
+          <div class="chips" style="margin-top:10px;">
+            <span class="chip primary" style="pointer-events:none;">Our Woman in Moscow</span>
+            <a class="chip" href="https://www.amazon.com/Our-Woman-Moscow-Beatriz-Williams/dp/0063020785" target="_blank" rel="noopener">Amazon</a>
+            <a class="chip" href="https://bookshop.org/p/books/our-woman-in-moscow-a-novel-beatriz-williams/c4054dd6671c4a50" target="_blank" rel="noopener">Bookshop</a>
+          </div>
         </div>
       </div>
 
-      <div style="margin-top:14px;">
-        <a class="textlink" href="#">View all events →</a>
-      </div>
     </div>
   </section>
 
@@ -506,7 +450,8 @@
       <p class="smallcaps">Contact</p>
       <h2>Inquiries</h2>
       <p class="lead">
-        For speaking requests, media inquiries, or rights: <a class="textlink" href="mailto:info@example.com">info@example.com</a>
+        For speaking requests, media inquiries, or rights:
+        <a style="border-bottom:1px solid rgba(15,26,34,.22); padding-bottom:2px;" href="mailto:info@example.com">info@example.com</a>
       </p>
     </div>
   </section>
@@ -516,10 +461,9 @@
       <div class="foot">
         <p class="footname">Beatriz Williams</p>
         <nav class="footnav" aria-label="Footer">
+          <a href="#featured">Latest</a>
           <a href="#books">Books</a>
           <a href="#about">About</a>
-          <a href="#events">Events</a>
-          <a href="#newsletter">Newsletter</a>
           <a href="#contact">Contact</a>
         </nav>
       </div>

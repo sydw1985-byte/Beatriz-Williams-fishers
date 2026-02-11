@@ -68,17 +68,24 @@
 
     /* HERO */
     .hero{
-      padding:78px 0 38px 0;
-      background:
-        linear-gradient(180deg, rgba(246,243,238,.92), rgba(246,243,238,.88)),
-        url("./assets/hero.jpg") center/cover no-repeat;
-      border-bottom:1px solid var(--rule);
-    }
-    .hero-grid{ display:grid; grid-template-columns: 1.15fr .85fr; gap:42px; align-items:center; }
-    .kicker{
-      font-size:12px; letter-spacing:.14em; text-transform:uppercase;
-      color:rgba(15,26,34,.68); margin:0 0 14px 0;
-    }
+  padding:78px 0 38px 0;
+  background:
+    linear-gradient(180deg, rgba(246,243,238,.72), rgba(246,243,238,.62)),
+    url("./assets/hero.jpg") center/cover no-repeat;
+  background-blend-mode: normal;
+  filter: contrast(1.06) saturate(1.03);
+  border-bottom:1px solid var(--rule);
+}
+
+.hero-copy{
+  background: rgba(246,243,238,.78);
+  border: 1px solid rgba(15,26,34,.12);
+  border-radius: 18px;
+  padding: 18px 18px 14px 18px;
+  max-width: 720px;
+  box-shadow: 0 14px 36px rgba(15,26,34,.08);
+  backdrop-filter: blur(6px);
+}
     h1{
       font-family:var(--serif); font-weight:600;
       margin:0 0 14px 0;
@@ -189,6 +196,66 @@
       filter: grayscale(100%) contrast(1.06) brightness(1.02);
     }
     .about p{ margin:0 0 14px 0; font-size:18px; line-height:1.75; color:rgba(15,26,34,.82); }
+    /* Praise */
+    .praise-carousel{
+  display:grid;
+  grid-template-columns: 44px 1fr 44px;
+  gap:14px;
+  align-items:center;
+  border:1px solid var(--rule);
+  background: var(--paper);
+  border-radius: var(--radius);
+  padding:18px 14px;
+  box-shadow: var(--shadow);
+  max-width: 980px;
+}
+
+.praise-slide blockquote{
+  margin:0;
+  padding:0;
+  border:0;
+  background:transparent;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 24px;
+  line-height: 1.6;
+  color: rgba(15,26,34,.92);
+}
+
+.praise-slide figcaption{
+  margin-top:12px;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color: rgba(15,26,34,.62);
+}
+
+.praise-btn{
+  height:44px;
+  width:44px;
+  border-radius:999px;
+  border:1px solid var(--rule);
+  background: rgba(255,255,255,.55);
+  cursor:pointer;
+  font-size:22px;
+  line-height:1;
+}
+.praise-btn:hover{
+  background: var(--sea-10);
+  border-color: var(--sea-28);
+}
+
+@media (max-width: 520px){
+  .praise-carousel{
+    grid-template-columns: 1fr;
+  }
+  .praise-btn{
+    display:none; /* swipe/auto on mobile */
+  }
+  .praise-slide blockquote{
+    font-size: 21px;
+  }
+}
 
     /* Books grid */
     .books-head{
@@ -344,6 +411,25 @@
       </div>
     </div>
   </section>
+  <!-- PRAISE -->
+  <section id="praise">
+  <div class="container">
+    <p class="smallcaps">Praise</p>
+
+    <div class="praise-carousel" aria-roledescription="carousel">
+      <button class="praise-btn" type="button" aria-label="Previous quote" onclick="praisePrev()">‹</button>
+
+      <figure class="praise-slide" aria-live="polite">
+        <blockquote id="praise-quote">
+          I think Williams is writing the best historical fiction out there. It's lush with period detail but feels immediate.
+        </blockquote>
+        <figcaption id="praise-cite">— Elin Hilderbrand</figcaption>
+      </figure>
+
+      <button class="praise-btn" type="button" aria-label="Next quote" onclick="praiseNext()">›</button>
+    </div>
+  </div>
+</section>
 
   <!-- BOOKS -->
   <section id="books">
@@ -443,6 +529,48 @@
 
     </div>
   </section>
+  
+  <script>
+  
+  const praiseItems = [
+    {
+      q: "I think Williams is writing the best historical fiction out there. It's lush with period detail but feels immediate.",
+      c: "— Elin Hilderbrand"
+    },
+    {
+      q: "There are few more skilled practitioners of the craft of summer fiction than Beatriz Williams.",
+      c: "— The New York Times"
+    },
+    {
+      q: "[Williams'] novels are packed with complex, daring, and intriguingly human women.",
+      c: "— NPR.com"
+    },
+    {
+      q: "Williams’ particular gift as a writer is peeling back the pages of history to breathe life into the interior lives of women — how they lived, loved, and lost within the expectations and limitations of their time.",
+      c: "— Entertainment Weekly"
+    }
+  ];
+
+  let praiseIndex = 0;
+
+  function renderPraise(){
+    document.getElementById("praise-quote").textContent = praiseItems[praiseIndex].q;
+    document.getElementById("praise-cite").textContent = praiseItems[praiseIndex].c;
+  }
+
+  function praiseNext(){
+    praiseIndex = (praiseIndex + 1) % praiseItems.length;
+    renderPraise();
+  }
+
+  function praisePrev(){
+    praiseIndex = (praiseIndex - 1 + praiseItems.length) % praiseItems.length;
+    renderPraise();
+  }
+
+  // auto-rotate every 6s (subtle)
+  setInterval(praiseNext, 6000);
+</script>
 
   <!-- CONTACT -->
   <section id="contact">
